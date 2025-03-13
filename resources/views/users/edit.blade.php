@@ -1,20 +1,21 @@
-@extends('layouts.app')
-
-@section('content')
-    <h2>Edit User</h2>
-    <form action="{{ route('users.update', $user->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <label>Name:</label>
-        <input type="text" name="name" value="{{ $user->name }}" required><br>
-
-        <label>Email:</label>
-        <input type="email" name="email" value="{{ $user->email }}" required><br>
-
-        <label>Password (Leave blank if not changing):</label>
-        <input type="password" name="password"><br>
-
-        <button type="submit">Update</button>
-    </form>
-@endsection
+<form action="{{ route('users.update', $user->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="{{ $user->name }}" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="{{ $user->email }}" required>
+    </div>
+    <div>
+        <label for="password">Password (leave blank to keep current password):</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <div>
+        <label for="password_confirmation">Confirm Password:</label>
+        <input type="password" name="password_confirmation" id="password_confirmation">
+    </div>
+    <button type="submit">Update User</button>
+</form>
